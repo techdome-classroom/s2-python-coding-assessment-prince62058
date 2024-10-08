@@ -1,6 +1,6 @@
 class Solution:
     def romanToInt(self, s: str) -> int:
-       roman_map = {
+        roman_map = {
             'I': 1,
             'V': 5,
             'X': 10,
