@@ -12,7 +12,7 @@ def isValid(s: str) -> bool:
     
     return not stack
 
-# Test cases
-print(isValid("()"))       # Output: True
-print(isValid("()[]{}"))   # Output: True
-print(isValid("(]"))       # Output: False
+
+print(isValid("()"))       
+print(isValid("()[]{}"))   
+print(isValid("(]"))       
