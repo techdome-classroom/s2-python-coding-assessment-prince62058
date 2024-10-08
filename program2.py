@@ -9,17 +9,14 @@ class Solution:
             'D': 500,
             'M': 1000
         }
-
+        
         total = 0
-        prev_value = 0
-
-        for char in s:
-            current_value = roman_map[char]
-            if current_value > prev_value:
-                total += current_value - 2 * prev_value
+        n = len(s)
+        
+        for i in range(n):
+            if i < n - 1 and roman_map[s[i]] < roman_map[s[i + 1]]:
+                total -= roman_map[s[i]]
             else:
-                total += current_value
-            
-            prev_value = current_value
-
+                total += roman_map[s[i]]
+                
         return total
