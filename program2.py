@@ -1,10 +1,18 @@
-class Solution(object):
-    def romanToInt(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
-        pass
+def isValid(s: str) -> bool:
+    bracket_map = {')': '(', '}': '{', ']': '['}
+    stack = []
+    
+    for char in s:
+        if char in bracket_map:
+            top_element = stack.pop() if stack else '#'
+            if bracket_map[char] != top_element:
+                return False
+        else:
+            stack.append(char)
+    
+    return not stack
 
-
-
+# Test cases
+print(isValid("()"))       # Output: True
+print(isValid("()[]{}"))   # Output: True
+print(isValid("(]"))       # Output: False
