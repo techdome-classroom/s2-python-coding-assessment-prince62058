@@ -1,14 +1,16 @@
-class Solution(object):
-    def isValid(self, s):
-        stack = []
-        mapping = {")": "(", "}": "{", "]": "["}
+# program2.py
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        roman_map = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+        total = 0
+        prev_value = 0
 
-        for char in s:
-            if char in mapping:
-                top_element = stack.pop() if stack else '#'
-                if mapping[char] != top_element:
-                    return False
+        for char in reversed(s):
+            current_value = roman_map[char]
+            if current_value < prev_value:
+                total -= current_value
             else:
-                stack.append(char)
+                total += current_value
+            prev_value = current_value
 
-        return not stack
+        return total
