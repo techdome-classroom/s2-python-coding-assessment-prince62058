@@ -1,14 +1,15 @@
-class Solution(object):
-    def is_valid(self, s):
-        """Check if a string of parentheses is valid."""
+# program1.py
+class Solution:
+    def isValid(self, s: str) -> bool:
+        bracket_map = {')': '(', '}': '{', ']': '['}
         stack = []
-        pairs = {')': '(', '}': '{', ']': '['}
-
+        
         for char in s:
-            if char in pairs:
-                if not stack or stack.pop() != pairs[char]:
+            if char in bracket_map:
+                top_element = stack.pop() if stack else '#'
+                if bracket_map[char] != top_element:
                     return False
             else:
                 stack.append(char)
-
+        
         return not stack
